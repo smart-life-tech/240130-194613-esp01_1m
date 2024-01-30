@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Arduino/iftttemail"
+		},
+		{
+			"name": "240130-194613-esp01_1m",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"stm32-for-vscode.openOCDPath": false,
+		"stm32-for-vscode.makePath": false,
+		"stm32-for-vscode.armToolchainPath": false
+	}
+}
