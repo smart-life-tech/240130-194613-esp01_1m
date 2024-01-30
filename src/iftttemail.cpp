@@ -1,9 +1,10 @@
 #include <ESP8266WiFi.h>
 // #include <HTTPClient.h>
 #include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
 const char *ssid = "put your wifi ssid here";
 const char *password = "put your wifi password here";
-
+const int buttonPin = 2;
 const char *server_name = "http://maker.ifttt.com/trigger/sendemail/with/key/EBT913u-Aj1Z-tL0Rs225";
 
 unsigned long last_time = 0;
@@ -12,7 +13,7 @@ unsigned long timer_delay = 2000;
 void setup()
 {
     Serial.begin(115200);
-
+    pinMode(buttonPin, INPUT_PULLUP);
     WiFi.begin(ssid, password);
     Serial.println("Connecting to WIFI…");
     while (WiFi.status() != WL_CONNECTED)
@@ -33,7 +34,7 @@ void setup()
 void loop()
 {
     // Send an HTTP POST request every 10 seconds
-    if ((millis() - last_time) > timer_delay)
+    if ((digitalRead(buttonPin) == LOW))
     {
         // Check WiFi connection status
         if (WiFi.status() == WL_CONNECTED)
@@ -50,14 +51,6 @@ void loop()
             // Send HTTP POST request
             String httpRequestData = "the button has just been pressed !";
             int httpResponseCode = http.POST(httpRequestData);
-
-            /*
-              http.addHeader("Content-Type", "application/json");
-
-              String httpRequestData = "{\"value1\":\"" + String(random(50)) + "\",\"value2\":\"" + String(random(50)) + "\",\"value3\":\"" + String(random(50)) + "\"}";
-
-              int httpResponseCode = http.POST(httpRequestData);
-            */
 
             Serial.print("HTTP Response code is: ");
             Serial.println(httpResponseCode);
