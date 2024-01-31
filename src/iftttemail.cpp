@@ -25,7 +25,7 @@ void setup()
     Serial.print("IP Address: ");
     Serial.println(WiFi.localIP());
 
-    Serial.println("After 10 seconds the first set of readings will be displayed");
+    Serial.println("After 10 seconds the first set of readings will be displayed");// you can edit this line to suit your message needs
 
     // initialize a pseudorandom number
     randomSeed(analogRead(23));
