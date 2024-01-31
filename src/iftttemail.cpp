@@ -52,6 +52,7 @@ void loop()
     // Send an HTTP POST request every 10 seconds
     if ((digitalRead(buttonPin) == LOW))
     {
+        delay(500);
         Serial.println("button has been pressed");
         // Check WiFi connection status
         if (WiFi.status() == WL_CONNECTED)
@@ -64,13 +65,15 @@ void loop()
             // Specify content-type header
             http.addHeader("Content-Type", "application/x-www-form-urlencoded");
             // Data to send with HTTP POST
-            // String httpRequestData = "value1=" + String(random(50)) + "&value2=" + String(random(50)) + "&value3=" + String(random(50));
+            String httpRequestDatas = "LOCKDOWN ACTIVATED !";
+            String httpRequestData = "value1=" + httpRequestDatas + "&value2=" + String(random(50)) + "&value3=" + String(random(50));
             // Send HTTP POST request
-            String httpRequestData = "the button has just been pressed !";
+
             int httpResponseCode = http.POST(httpRequestData);
 
             Serial.print("HTTP Response code is: ");
             Serial.println(httpResponseCode);
+            Serial.println(httpRequestDatas);
 
             http.end();
         }
