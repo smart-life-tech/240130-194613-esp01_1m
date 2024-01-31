@@ -4,7 +4,7 @@
 #include <WiFiClient.h>
 const char *ssid = "put your wifi ssid here";
 const char *password = "put your wifi password here";
-const int buttonPin = 2;
+const int buttonPin = 4;
 const char *server_name = "http://maker.ifttt.com/trigger/sendemail/with/key/EBT913u-Aj1Z-tL0Rs225";
 
 unsigned long last_time = 0;
